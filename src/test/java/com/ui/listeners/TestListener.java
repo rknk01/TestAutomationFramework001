@@ -64,6 +64,7 @@ public class TestListener implements ITestListener{
 		 logger.info(result.getMethod().getMethodName()+" "+"SKIPPED");
 		 //extentTest.log(Status.SKIP, result.getMethod().getMethodName()+" "+"SKIPPED");
 		 test.log(Status.SKIP, result.getMethod().getMethodName()+" "+"SKIPPED");
+		 test.log(Status.SKIP, "Reason for Skip: " + result.getThrowable());
 		  }
 	 
 	 public void onStart(ITestContext context) {

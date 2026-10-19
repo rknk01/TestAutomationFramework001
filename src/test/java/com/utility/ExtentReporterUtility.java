@@ -27,4 +27,8 @@ public class ExtentReporterUtility {
 	public static void flushReport() {
 		extentReport.flush();
 	}
+	
+	public static ExtentReports getReporterInstance() {
+		return extentReport;
+	}
 }
