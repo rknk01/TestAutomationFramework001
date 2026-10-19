@@ -52,7 +52,7 @@ public class TestListener implements ITestListener{
 		 BrowserUtility bu=((TestBase)testClass).getInstance();
 		 logger.info("Capturing screenshot for failed test cases");
 		String screenshotPath= bu.takeScreenshot(result.getMethod().getMethodName());
-		ExtentReporterUtility.getTest().addVideoFromPath(screenshotPath);
+		ExtentReporterUtility.getTest().addScreenCaptureFromPath(screenshotPath);
 		  }
 	 
 	 public void onTestSkipped(ITestResult result) {
