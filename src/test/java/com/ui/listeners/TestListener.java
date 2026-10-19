@@ -20,9 +20,7 @@ import com.utility.TestBase;
 public class TestListener implements ITestListener{
 	Logger logger=LoggerUtility.getLogger(this.getClass());
 	
-	ExtentSparkReporter extentSparkReporter;
-	ExtentReports extentReports;
-	ExtentTest extentTest;
+	
 	
 
 	 public void onTestStart(ITestResult result) {
@@ -57,9 +55,15 @@ public class TestListener implements ITestListener{
 	 
 	 public void onTestSkipped(ITestResult result) {
 		    // not implemented
+		 ExtentTest test = ExtentReporterUtility.getTest();
+		 if(test==null) {
+			 
+			 ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
+			 test= ExtentReporterUtility.getTest();
+		 }
 		 logger.info(result.getMethod().getMethodName()+" "+"SKIPPED");
 		 //extentTest.log(Status.SKIP, result.getMethod().getMethodName()+" "+"SKIPPED");
-		 ExtentReporterUtility.getTest().log(Status.SKIP, result.getMethod().getMethodName()+" "+"SKIPPED");
+		 test.log(Status.SKIP, result.getMethod().getMethodName()+" "+"SKIPPED");
 		  }
 	 
 	 public void onStart(ITestContext context) {
